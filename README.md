@@ -40,7 +40,7 @@ Why should I use monitor-internet-connection.py?
 -------------------------------------------------
 If you have an automated long-running process/program/activity on your computer that requires Internet connectivity, there is nothing worse than coming back the next hour/day/week/whenever to review the logs/progress and find out that the program failed or data is missing because of lost Internet connectivity.  What is worse - you may not know exactly when Internet connectivity was lost.  Thus, will you need to rerun the entire program? Or just a part of it? and so on.
 
-The program `monitor-internet-connection.py` is a solution to that problem in that it monitors Internet connectivity and in real-time, both displays on the console/terminal and records to a logfile, the start time, end time and duration of any Internet connectivity downtime. You may simply run this program in a console/terminal and leave it running for days/weeks on end.
+The program `monitor-internet-connection.py` is a solution to that problem in that it monitors Internet connectivity and in real-time, both displays on the console/terminal and records to a logfile: the start time, the end time and the duration of any Internet connectivity downtime. You may simply run this program in a console/terminal and leave it running for days/weeks on end.
 
 
 What does monitor-internet-connection.py do?
