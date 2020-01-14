@@ -75,20 +75,26 @@ How do I download/install the program monitor-internet-connection.py
 git clone https://github.com/mfoc/Monitor-Internet-Connection
 ```
 
+2)  From the current working folder in the console/terminal, change to the `Monitor-Internet-Connection` folder.
+```console
+cd Monitor-Internet-Connection
+```
+
 OR
 
-1) Download via your Internet Browser by selecting the `Clone or Download` button on the [Monitor-Internet-Connection github repository page](https://github.com/mfoc/Monitor-Internet-Connection) and then selecting `Download zip`.  Save the zip file to your current working directory and extract it there.
+1) Download via your Internet Browser by selecting the `Clone or Download` button on the [Monitor-Internet-Connection github repository page](https://github.com/mfoc/Monitor-Internet-Connection) and then selecting `Download zip`.  Save the zip file to your current working folder and extract it there.
+
+2)  From the current working folder in the console/terminal, change to the `Monitor-Internet-Connection-master` folder.
+```console
+cd Monitor-Internet-Connection-master
+```
 
 
 How do I run the program monitor-internet-connection.py
 -------------------------------------------------------
+After following the installation instructions above:
 
-1)  From the working directory in the console/terminal, change to the `Monitor-Internet-Connection` folder.
-```console
-cd Monitor-Internet-Connection/
-```
-
-2) Run the following command in the console/terminal
+1) Run the following command in the console/terminal
 ```console
 python monitor-internet-connection.py
 ```
