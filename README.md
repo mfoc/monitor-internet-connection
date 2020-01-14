@@ -2,6 +2,22 @@
 A Python program to monitor Internet connectivity and record the time and duration of any downtime.
 
 
+Logfile/Console Sample output
+-----------------------------
+
+```
+--------------------------------------------------------------
+--------------------------------------------------------------
+Monitoring Internet Connection commencing : 2020-01-10 10:34:45
+-------Internet Connection unavailable at : 2020-01-11 07:35:01
+-------Internet Connection restored at    : 2020-01-11 07:35:10
+-------The duration of the downtime was   :             0:00:09
+-------Internet Connection unavailable at : 2020-01-12 08:35:20
+-------Internet Connection restored at    : 2020-01-12 08:36:27
+-------The duration of the downtime was   :             0:01:07
+Monitoring Internet Connection stopped at : 2020-01-13 12:42:38
+```
+
 Overview
 --------
 Name: 		monitor-internet-connection.py
@@ -35,7 +51,7 @@ If the Internet is unreachable:
 
 1) The first observed time of failure is logged. 
 
-2) Every one-minute interval of subsequent unavailability is logged. The one-minute logs can be useful as a proxy indicator of whether the computer lost power or just the Internet connection was unreachable.
+2) Every one-minute interval of subsequent unavailability is logged. The one-minute logs can be useful as a proxy indicator of whether the computer lost power or just the Internet connection was unavailable.
 
 3) When Internet connectivity is restored, the first observed time of restoration is logged. 
     
