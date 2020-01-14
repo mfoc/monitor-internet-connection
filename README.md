@@ -1,6 +1,9 @@
 # Monitor-Internet-Connection
 A Python program to monitor Internet connectivity and record the time and duration of any downtime.
 
+
+Overview
+--------
 Name: 		monitor-internet-connection.py
 
 Version: 	1.1
@@ -16,45 +19,64 @@ What is monitor-internet-connection.py?
 ---------------------------------------
 It is a simple Python program to monitor Internet connectivity - that is to say to monitor that an external IP address is always reachable.
 
+
 Why should you use monitor-internet-connection.py?
 -------------------------------------------------
-If you have any automated long-running process/program/activity on your computer that requires Internet connectivity, there is nothing worse that coming back the next hour/day/week/whenever to review the logs/progress and find out that the program failed or data is missing because of lost Internet connectivity.  What is worse - you may not know exactly when internet connectivity was lost.  Thus, will you need to rerun the entire program or just a part of it and so on.
+If you have an automated long-running process/program/activity on your computer that requires Internet connectivity, there is nothing worse that coming back the next hour/day/week/whenever to review the logs/progress and find out that the program failed or data is missing because of lost Internet connectivity.  What is worse - you may not know exactly when internet connectivity was lost.  Thus, will you need to rerun the entire program? Or just a part of it? and so on.
 
-The program monitor-internet-connection.py is a solution to that problem in that it gives you precise and specific knowledge concerning the uptime and downtime of Internet Connectivity.  You may simply run this program in a console/terminal and leave it running for days/weeks on end.
+The program `monitor-internet-connection.py` is a solution to that problem in that it gives you precise and specific knowledge concerning the availability and unavailability of Internet Connectivity.  You may simply run this program in a console/terminal and leave it running for days/weeks-on-endc
 
 
 What does monitor-internet-connection.py do?
 --------------------------------------------
-This program monitors every 5 seconds whether the Internet connection is alive and an external IP address is reachable.
+Every 5 seconds, the program monitors whether the Internet connection is alive and an external IP address is reachable.
 
 If the Internet is unreachable:
 
 1) The first observed time of failure is logged. 
 
-2) Every 1-minute interval of subsequent unavailability is logged. The one-minute logs can be useful as a proxy indicator of whether the computer lost power or just the internet connection was unreachable.
+2) Every one-minute interval of subsequent unavailability is logged. The one-minute logs can be useful as a proxy indicator of whether the computer lost power or just the Internet connection was unreachable.
 
 3) When Internet connectivity is restored, the first observed time of restoration is logged. 
     
-4) Finally, the total duration of the Internet unavailability is logged.
+4) Finally, the total time duration of the Internet unavailability is logged.
 
-The log file internet_monitor.log is always appended to, never overwritten.  The information written to the log file is also displayed on the console/terminal.
+Note:
+
+-  The log file `internet_monitor.log` is always appended to, never overwritten.  
+-  The information written to the log file is also displayed on the console/terminal.
 
 Prerequisites
 -------------
-1) You must have Python 3 installed.  To determine what version of Python you have installed (if any), you may visit [check-python-version](https://phoenixnap.com/kb/check-python-version) and follow the instructions therein.
+1) You must have Python 3 already installed.  To determine what version of Python you have installed (if any), you may visit [check-python-version](https://phoenixnap.com/kb/check-python-version) and follow the instructions therein.
+
+
+How do I download the program monitor-internet-connection.py
+------------------------------------------------------------
+First download the monitor-internet-connection.py program to your current working folder (to which you have write access).
+
+1)  Download using Git from the console/terminal.
+```console
+git clone https://github.com/mfoc/Monitor-Internet-Connection
+```
+
+OR
+
+1) Download via your Internet Browser by selecting the `Clone or Download` button on the [github repository page](https://github.com/mfoc/Monitor-Internet-Connection) and then selecting `Download zip`.  Save the zip file to your current working directory and extract it there.
 
 
 How do I run the program monitor-internet-connection.py
 -------------------------------------------------------
-1) Download the monitor-internet-connection.py program to your chosen current working folder.  
-   NOTE: This program requires write-access to the current working folder in order to create and store the log file internet_monitor.log.
-   Nothing else is written to your folder.
 
-2) Open up a command line console/terminal and ensure the folder is set to your chosen current working folder
+1)  From the working directory in the Console/Terminal, change to the `Monitor-Internet-Connection` folder.
+```console
+cd Monitor-Internet-Connection/
+```
 
-3) Run the following command in the terminal/console:
-    `python monitor-internet-connection.py`
-
+2) Run the following command in the Console/Terminal
+```console
+python monitor-internet-connection.py
+```
 
 How do I exit the program monitor-internet-connection.py
 -------------------------------------------------------
@@ -64,3 +86,8 @@ To exit the program, simply press `Ctrl-C` inside the console/terminal.  This wi
 Acknowledgments
 ---------------
 The `is_internet-alive` method was inspired by 7h3rAm's answer on [Stackoverflow](https://stackoverflow.com/questions/3764291/checking-network-connection)
+
+
+Licence
+---------------
+This project is licensed under the MIT License - see the LICENSE.md file for details
