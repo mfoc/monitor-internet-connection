@@ -51,11 +51,10 @@ Prerequisites
 1) You must have Python 3 already installed.  To determine what version of Python you have installed (if any), you may visit [check-python-version](https://phoenixnap.com/kb/check-python-version) and follow the instructions therein.
 
 
-How do I download the program monitor-internet-connection.py
-------------------------------------------------------------
-First download the monitor-internet-connection.py program to your current working folder (to which you have write access).
+How do I download/install the program monitor-internet-connection.py
+-------------------------------------------------------------------
 
-1)  Download using Git from the console/terminal.
+1)  Download using Git from the console/terminal to your current working folder (to which you have write access).
 ```console
 git clone https://github.com/mfoc/Monitor-Internet-Connection
 ```
