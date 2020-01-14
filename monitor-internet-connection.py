@@ -12,7 +12,7 @@ Version:        1.0
 
 This program checks every X (5) seconds whether the Internet connection
 is alive and an external IP address is reachable.
-If the Internet connection is unreachable:
+If the Internet connection is unavailable:
     1. The first observed time of failure is logged. 
     2. Every 1-minute interval of subsequent downtime is logged.
     3. When Internet connectivity is restored, the first observed time of 
@@ -131,7 +131,7 @@ def monitor_inet_connection():
         else:
             # Record observed time when internet connectivity fails.
             fail_time = datetime.datetime.now()
-            msg = "-------Internet Connection unreachable at : " + str(fail_time).split(".")[0]
+            msg = "-------Internet Connection unavailable at : " + str(fail_time).split(".")[0]
             print(msg)
             with open(file, 'a') as writer:
                 writer.write(msg + "\n")
@@ -143,11 +143,11 @@ def monitor_inet_connection():
                 counter += 1
                 # For each minute of downtime, log it.
                 # The one-minute logs can be useful as a proxy to indicate whether the computer lost power,
-                # or just the internet connection was unreachable.
+                # or just the internet connection was unavailable.
                 if counter >= 60:
                     counter = 0
                     now = datetime.datetime.now()
-                    msg = "-----------Internet Connection still unreachable at : " + str(now).split(".")[0]
+                    msg = "-----------Internet Connection still unavailable at : " + str(now).split(".")[0]
                     print(msg)
                     with open(file, 'a') as writer:
                         writer.write(msg + "\n")
