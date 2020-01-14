@@ -92,9 +92,8 @@ cd Monitor-Internet-Connection-master
 
 How do I run the program monitor-internet-connection.py
 -------------------------------------------------------
-After following the installation instructions above:
+Run the following command in the console/terminal.
 
-1) Run the following command in the console/terminal
 ```console
 python monitor-internet-connection.py
 ```
