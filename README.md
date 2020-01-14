@@ -22,9 +22,9 @@ It is a simple Python program to monitor Internet connectivity - that is to say 
 
 Why should you use monitor-internet-connection.py?
 -------------------------------------------------
-If you have an automated long-running process/program/activity on your computer that requires Internet connectivity, there is nothing worse that coming back the next hour/day/week/whenever to review the logs/progress and find out that the program failed or data is missing because of lost Internet connectivity.  What is worse - you may not know exactly when internet connectivity was lost.  Thus, will you need to rerun the entire program? Or just a part of it? and so on.
+If you have an automated long-running process/program/activity on your computer that requires Internet connectivity, there is nothing worse that coming back the next hour/day/week/whenever to review the logs/progress and find out that the program failed or data is missing because of lost Internet connectivity.  What is worse - you may not know exactly when Internet connectivity was lost.  Thus, will you need to rerun the entire program? Or just a part of it? and so on.
 
-The program `monitor-internet-connection.py` is a solution to that problem in that it gives you precise and specific knowledge concerning the availability and unavailability of Internet Connectivity.  You may simply run this program in a console/terminal and leave it running for days/weeks-on-endc
+The program `monitor-internet-connection.py` is a solution to that problem in that it both displays on the console/terminal and logs to a logfile, precise and specific details concerning the availability and unavailability of Internet Connectivity.  You may simply run this program in a console/terminal and leave it running for days/weeks on end.
 
 
 What does monitor-internet-connection.py do?
@@ -62,18 +62,18 @@ git clone https://github.com/mfoc/Monitor-Internet-Connection
 
 OR
 
-1) Download via your Internet Browser by selecting the `Clone or Download` button on the [github repository page](https://github.com/mfoc/Monitor-Internet-Connection) and then selecting `Download zip`.  Save the zip file to your current working directory and extract it there.
+1) Download via your Internet Browser by selecting the `Clone or Download` button on the [Monitor-Internet-Connection github repository page](https://github.com/mfoc/Monitor-Internet-Connection) and then selecting `Download zip`.  Save the zip file to your current working directory and extract it there.
 
 
 How do I run the program monitor-internet-connection.py
 -------------------------------------------------------
 
-1)  From the working directory in the Console/Terminal, change to the `Monitor-Internet-Connection` folder.
+1)  From the working directory in the console/terminal, change to the `Monitor-Internet-Connection` folder.
 ```console
 cd Monitor-Internet-Connection/
 ```
 
-2) Run the following command in the Console/Terminal
+2) Run the following command in the console/terminal
 ```console
 python monitor-internet-connection.py
 ```
