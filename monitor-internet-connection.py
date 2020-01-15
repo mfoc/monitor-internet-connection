@@ -26,6 +26,17 @@ Version:        1.1
 Added functionality to capture Ctrl-C (and SIGINT) and exit the program
 gracefully.
 
+
+Date:           15th January 2020
+Version:        1.1.3
+
+Updates:
+    1.  Made publicly available as a package called monitor-internet-connection
+        on the Python Package Index https://pypi.org/  
+    2.  Greatly simplified the installation instructions.
+        To install: pip install monitor_internet_connection
+        To run:     python -m monitor_internet_connection
+
 """
 
 import time
