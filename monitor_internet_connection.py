@@ -31,12 +31,26 @@ Date:           15th January 2020
 Version:        1.1.3
 
 Updates:
-    1.  Made publicly available as a package called monitor-internet-connection
-        on the Python Package Index https://pypi.org/  
+    1.  Made available as a public package called 'monitor internet connection'.
+        on the Python Package Index https://pypi.org/
+
     2.  Greatly simplified the installation instructions.
         To install: pip install monitor_internet_connection
         To run:     python -m monitor_internet_connection
 
+
+Date:           16th January 2020
+Version:        1.2.0
+
+Updates:
+    1. Added the argparse library.
+    2. Added command line option to display a help message.
+    3. Added command line option to disable the logfile.
+       With this option, no write-access to disk is required.
+    4. Added command line option to specify the polling frequency in seconds.
+       There are nine options available [1, 2, 3, 4, 5, 10, 20, 30, 60].
+    5. When logfile is enabled, verify logfile can be created
+       in current working folder.
 """
 
 import time
@@ -44,16 +58,33 @@ import datetime
 import socket
 import os
 import signal
+import argparse
 import sys
 
-# log file generated in current working directory.
+# If enabled, the log file will be created in the current working folder.
 log_filename = "internet_monitor.log"
-
-# The log file will be created in the current working folder.
 file = os.path.join(os.getcwd(), log_filename)
 
-# Polling frequency in seconds (how often inet connection is checked)
-freqency_in_secs = 5
+
+def parse_args(args=sys.argv[1:]):
+    """Parse arguments."""
+
+    parser = argparse.ArgumentParser(
+        description="Monitor the uptime of the Internet connection and record any downtime",
+        prog='python -m monitor_internet_connection')
+
+    parser.add_argument("-n", "--no-logfile", dest='disable_logfile',
+                   help="do not create a logfile",
+                   action="store_true")
+
+    parser.add_argument("-f", "--freq", dest="polling_freq", metavar="N",
+                   default=1,
+                   type=int,
+                   choices=[1, 2, 3, 4, 5, 10, 20, 30, 60],
+                   help="specify polling frequency in seconds")
+
+    return parser.parse_args(args)
+
 
 
 def is_internet_alive(host="8.8.8.8", port=53, timeout=3):
@@ -112,40 +143,64 @@ def signal_handler(signal_received, frame):
     # Display exit message to console and record in log file.
     exit_time = datetime.datetime.now()
     exit_msg = "Monitoring Internet Connection stopped at : " + exit_time.strftime("%Y-%m-%d %H:%M:%S")
-    with open(file, 'a') as writer:
-        writer.write(exit_msg + "\n")
-
     print(exit_msg)
+
+    if enable_logfile:
+        with open(file, 'a') as writer:
+            writer.write(exit_msg + "\n")
+
     sys.exit()
 
 
-def monitor_inet_connection():
+def verify_write_access():
+    """ Verify the logfile can be created in the current working folder"""
+
+    if enable_logfile:
+        try:
+            with open(file, 'a') as writer:
+                pass
+        except OSError as err:
+            print("Unable to create logfile in current working folder. Exiting program.")
+            sys.exit()
+        finally:
+            pass
+
+
+
+def monitor_inet_connection(enable_logfile = True, polling_freq = 1):
     """ Monitor internet connection indefinitely."""
 
     # Capture the Ctrl-C (or SIGINT) signal to permit the program to exit gracefully.
     signal.signal(signal.SIGINT, signal_handler)
 
+    if enable_logfile:
+        verify_write_access()
+
     # Write to log file when Internet monitoring commences.
-    with open(file, 'a') as writer:
-        writer.write("--------------------------------------------------------------\n")
-        writer.write("--------------------------------------------------------------\n")
-        now = datetime.datetime.now()
-        # msg = "Monitoring Internet Connection commencing: " + now.strftime("%Y-%m-%d %H:%M:%S")
-        msg = "Monitoring Internet Connection commencing : " + str(now).split(".")[0]
-        print(msg)
-        writer.write(msg + "\n")
+    now = datetime.datetime.now()
+    # msg = "Monitoring Internet Connection commencing: " + now.strftime("%Y-%m-%d %H:%M:%S")
+    msg = "Monitoring Internet Connection commencing : " + str(now).split(".")[0] + \
+            " polling every " + str(polling_freq) + " second(s)"
+    print(msg)
+
+    if enable_logfile:
+        with open(file, 'a') as writer:
+            writer.write("--------------------------------------------------------------\n")
+            writer.write("--------------------------------------------------------------\n")
+            writer.write(msg + "\n")
 
     while True:
         # When run on cmd line, exit program via Ctrl-C.
         if is_internet_alive():
-            time.sleep(freqency_in_secs)
+            time.sleep(polling_freq)
         else:
             # Record observed time when internet connectivity fails.
             fail_time = datetime.datetime.now()
             msg = "-------Internet Connection unavailable at : " + str(fail_time).split(".")[0]
             print(msg)
-            with open(file, 'a') as writer:
-                writer.write(msg + "\n")
+            if enable_logfile:
+                with open(file, 'a') as writer:
+                    writer.write(msg + "\n")
 
             # Check every 1 second to see if internet connectivity restored.
             counter = 0
@@ -160,8 +215,9 @@ def monitor_inet_connection():
                     now = datetime.datetime.now()
                     msg = "-----------Internet Connection still unavailable at : " + str(now).split(".")[0]
                     print(msg)
-                    with open(file, 'a') as writer:
-                        writer.write(msg + "\n")
+                    if enable_logfile:
+                        with open(file, 'a') as writer:
+                            writer.write(msg + "\n")
 
             # Record observed time when internet connectivity restored.
             restore_time = datetime.datetime.now()
@@ -174,11 +230,17 @@ def monitor_inet_connection():
             # Display restoration message to console and record in log file.
             print(restore_msg)
             print(duration_msg)
-            with open(file, 'a') as writer:
-                writer.write(restore_msg + "\n")
-                writer.write(duration_msg + "\n")
+            if enable_logfile:
+                with open(file, 'a') as writer:
+                    writer.write(restore_msg + "\n")
+                    writer.write(duration_msg + "\n")
 
 
-# To exit the program, press Ctrl-C
-if __name__ == '__main__':
-    monitor_inet_connection()
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    enable_logfile = not args.disable_logfile
+    monitor_inet_connection(enable_logfile, args.polling_freq)
+
+
