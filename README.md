@@ -19,6 +19,17 @@ Monitoring Internet Connection stopped at : 2020-01-13 12:42:38
 ```
 
 
+Overview
+--------
+Name: 		monitor_internet_connection
+
+Version: 	1.2.0
+
+Date: 		16th January 2020
+
+Author: 	Martin F. O'Connor
+
+YouTube Channel:  [Martin O'Connor](https://www.youtube.com/channel/UCSmYfqnVlhB418ugEZxudQw)
 
 
 What is monitor_internet_connection?
@@ -100,6 +111,11 @@ optional arguments:
 
 ```
 
+Acknowledgments
+---------------
+The `is_internet-alive` method was inspired by 7h3rAm's answer on [Stackoverflow](https://stackoverflow.com/questions/3764291/checking-network-connection)
+
+
 Licence
 ---------------
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE.md file for details
