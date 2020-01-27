@@ -23,9 +23,9 @@ Overview
 --------
 Name: 		monitor_internet_connection
 
-Version: 	1.2.0
+Version: 	1.2.1
 
-Date: 		16th January 2020
+Date: 		27th January 2020
 
 Author: 	Martin F. O'Connor
 
