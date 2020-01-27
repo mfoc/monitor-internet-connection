@@ -104,7 +104,6 @@ def is_internet_alive(host="8.8.8.8", port=53, timeout=3):
         socket.setdefaulttimeout(timeout)
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host, port))
-        return True
     except OSError as error:
         # print(error.strerror)
         return False
