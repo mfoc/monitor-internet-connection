@@ -51,6 +51,13 @@ Updates:
        There are nine options available [1, 2, 3, 4, 5, 10, 20, 30, 60].
     5. When logfile is enabled, verify logfile can be created
        in current working folder.
+
+Date:           27th January 2020
+Version:        1.2.1
+
+Updates:
+    1. Remove return statement to allow network socket to close.
+       (Thanks to kevin86wright)
 """
 
 import time
